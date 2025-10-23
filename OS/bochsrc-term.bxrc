@@ -1,0 +1,16 @@
+# Bochs configuration for terminal/text mode
+# Works in GitHub Codespaces without X server
+
+megs: 32
+
+romimage: file=/usr/share/bochs/BIOS-bochs-latest
+vgaromimage: file=/usr/share/bochs/VGABIOS-lgpl-latest
+
+boot: floppy
+floppya: 1_44=./build/os.img, status=inserted
+
+# Log to file instead of screen
+log: bochs.log
+error: action=report
+info: action=report
+panic: action=ask
