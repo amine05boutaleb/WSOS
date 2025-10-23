@@ -1,0 +1,60 @@
+# Bochs configuration file for Linux/GitHub Codespaces
+# This is a text-mode configuration (no GUI)
+
+# Use text-mode interface instead of win32config
+config_interface: textconfig
+display_library: x, options="gui_debug"
+
+# Memory configuration
+memory: guest=32, host=32
+
+# ROM images - use system default paths
+romimage: file=$BXSHARE/BIOS-bochs-latest
+vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
+
+# Boot from floppy
+boot: floppy
+floppy_bootsig_check: disabled=0
+
+# Path to OS image (relative path works in both environments)
+floppya: type=1_44, 1_44="./build/os.img", status=inserted, write_protected=0
+
+# ATA interfaces
+ata0: enabled=true, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+ata0-master: type=none
+ata0-slave: type=none
+ata1: enabled=true, ioaddr1=0x170, ioaddr2=0x370, irq=15
+ata1-master: type=none
+ata1-slave: type=none
+ata2: enabled=false
+ata3: enabled=false
+
+# PCI and VGA
+pci: enabled=1, chipset=i440fx
+vga: extension=vbe, update_freq=10, realtime=1
+
+# CPU configuration
+cpu: count=1, ips=4000000, model=corei7_haswell_4770, reset_on_triple_fault=1, cpuid_limit_winnt=0, ignore_bad_msrs=1, mwait_is_nop=0
+
+# Logging
+log: bochs.log
+logprefix: %t%e%d
+debug: action=ignore
+info: action=report
+error: action=report
+panic: action=ask
+
+# Keyboard and mouse
+keyboard: type=mf, serial_delay=150, paste_delay=100000, user_shortcut=none
+mouse: type=ps2, enabled=false
+
+# Disable speaker for text mode
+speaker: enabled=false
+
+# Ports
+parport1: enabled=false
+parport2: enabled=false
+com1: enabled=true, mode=null
+com2: enabled=false
+com3: enabled=false
+com4: enabled=false

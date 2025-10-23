@@ -58,13 +58,18 @@ Unfortunately, there's no single online tool that can compile and run this OS pr
    make clean
    make
 
-   # Run Bochs in text mode
-   bochs -f bochsrc.bxrc -q
+   # Run Bochs with Linux configuration
+   bochs -f bochsrc-linux.bxrc -q
    ```
 
-7. **View Output**
+7. **Start the OS**
+   - At the `<bochs:1>` prompt, type: `c` and press Enter
+
+8. **View Output**
    - You'll see text output in the terminal
    - Look for: **ABCDEBCDECDC**
+
+**Note**: Use `bochsrc-linux.bxrc` (not `bochsrc.bxrc`) in Codespaces. See `CODESPACES_GUIDE.md` for detailed instructions.
 
 ---
 
